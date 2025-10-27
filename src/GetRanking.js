@@ -243,19 +243,6 @@ export default function GetRanking() {
     }
   };
 
-  const handleCopyToken = () => {
-    const token = userData?.github_token;
-    if (!token) return;
-    navigator.clipboard
-      .writeText(token)
-      .then(() => alert("GitHub token copied to clipboard"))
-      .catch(() => alert("Failed to copy token"));
-  };
-
-  const handleProceed = () => {
-    alert("Proceed clicked — implement backend call here.");
-  };
-
   return (
     <div className="gr-container">
       <div className="gr-card">
