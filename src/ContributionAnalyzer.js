@@ -69,7 +69,7 @@ export default function ContributionAnalyzer() {
     setResponse(null);
 
     try {
-      const backendUrl = '/api/analyze-contribution';
+      const backendUrl = 'https://hire-lens-backend.vercel.app/api/analyze-contribution';
       
       const result = await fetch(backendUrl, {
         method: 'POST',
