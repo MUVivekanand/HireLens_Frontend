@@ -59,8 +59,8 @@ import asyncio
 import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from agents import create_mcp_agent
-from runners import run_mcp_agent
+from api.agents import create_mcp_agent
+from api.runners import run_mcp_agent
 
 app = Flask(__name__)
 CORS(app)
