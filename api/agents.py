@@ -29,7 +29,7 @@ async def create_mcp_agent():
     """Create MCP agent with math and mongodb tools"""
     print("Initializing MCP Agent with all tools...")
 
-    github_server_path = os.path.join(os.path.dirname(__file__), "..", "agents", "githubmcp.py")
+    github_server_path = os.path.join(os.path.dirname(__file__), "..", "api", "githubmcp.py")
 
     github_server = StdioServerParams(
         command="python", args=[github_server_path]
