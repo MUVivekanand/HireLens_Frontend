@@ -2,13 +2,10 @@ import os
 from autogen_ext.models.openai import AzureOpenAIChatCompletionClient
 from autogen_ext.tools.mcp import StdioServerParams, mcp_server_tools
 from autogen_agentchat.agents import AssistantAgent
-from dotenv import load_dotenv
 
-load_dotenv()
-
-AZURE_API_KEY = os.getenv("AZURE_KEY")
-AZURE_API_ENDPOINT = os.getenv("AZURE_ENDPOINT")
-AZURE_DEPLOYMENT = os.getenv("AZURE_DEPLOYMENT")
+AZURE_API_KEY="bf824178b8f04fc78f1b39effae26b4f"
+AZURE_API_ENDPOINT="https://texttodb.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2023-03-15-preview"
+AZURE_DEPLOYMENT="gpt-4o"
 
 if not AZURE_API_KEY or not AZURE_API_ENDPOINT or not AZURE_DEPLOYMENT:
     raise ValueError("Azure API credentials are not set.")
