@@ -52,5 +52,5 @@ def analyze_contribution():
 def health_check():
     return jsonify({"status": "Backend is running"}), 200
 
-if __name__ == "__main__":
-    app.run(debug=True, port=8765, host='localhost')
+# if __name__ == "__main__":
+#     app.run(debug=True, port=8765, host='localhost')
