@@ -8,6 +8,7 @@ export default function ContributionAnalyzer() {
   const [selectedProject, setSelectedProject] = useState('');
   const [authorName, setAuthorName] = useState('');
   const [ownerName, setOwnerName] = useState('');
+  const [githubToken, setGithubToken] = useState('');
   const [loading, setLoading] = useState(false);
   const [fetchingResume, setFetchingResume] = useState(false);
   const [response, setResponse] = useState(null);
@@ -64,6 +65,11 @@ export default function ContributionAnalyzer() {
       return;
     }
 
+    if (!githubToken.trim()) {
+      setError('Please enter your GitHub token');
+      return;
+    }
+
     setLoading(true);
     setError(null);
     setResponse(null);
@@ -80,6 +86,7 @@ export default function ContributionAnalyzer() {
           project: selectedProject,
           author: authorName,
           owner: ownerName,
+          github_token: githubToken,
         }),
       });
 
@@ -180,8 +187,8 @@ export default function ContributionAnalyzer() {
           <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'white', marginBottom: '20px' }}>
             Step 2: Analyze Contribution
           </h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', marginBottom: '20px' }}>
-            <div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginBottom: '20px' }}>
+            <div style={{ gridColumn: 'span 2' }}>
               <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '8px' }}>
                 Project Name
               </label>
@@ -267,6 +274,34 @@ export default function ContributionAnalyzer() {
                   outline: 'none'
                 }}
               />
+            </div>
+            <div style={{ gridColumn: 'span 2' }}>
+              <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#cbd5e1', marginBottom: '8px' }}>
+                GitHub Personal Access Token
+              </label>
+              <input
+                type="password"
+                value={githubToken}
+                onChange={(e) => setGithubToken(e.target.value)}
+                placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                style={{ 
+                  width: '100%', 
+                  padding: '10px 14px', 
+                  background: '#334155', 
+                  border: '1px solid #475569', 
+                  borderRadius: '8px', 
+                  color: 'white', 
+                  fontSize: '14px',
+                  outline: 'none',
+                  fontFamily: 'monospace'
+                }}
+              />
+              <p style={{ fontSize: '12px', color: '#64748b', marginTop: '6px' }}>
+                Required to access GitHub API. Generate one at{' '}
+                <a href="https://github.com/settings/tokens" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', textDecoration: 'none' }}>
+                  github.com/settings/tokens
+                </a>
+              </p>
             </div>
           </div>
 
